@@ -1,23 +1,24 @@
 import Validator from '../app';
 
-describe('This function should validate usernames', () => {
-  test('correct username', () => {
-    expect(Validator.validateUsername('test')).toBeTruthy();
-    expect(Validator.validateUsername('test')).toBeTruthy();
-    expect(Validator.validateUsername('test-test')).toBeTruthy();
-    expect(Validator.validateUsername('test3test')).toBeTruthy();
-    expect(Validator.validateUsername('test_test')).toBeTruthy();
-    expect(Validator.validateUsername('test23_test-test')).toBeTruthy();
-  });
+test.each([
+  ['test'],
+  ['test-test'],
+  ['test3test'],
+  ['test_test'],
+  ['test23_test-test'],
+])('testing validateUsername function - correct username', (username) => {
+  expect(Validator.validateUsername(username)).toBeTruthy();
+});
 
-  test('incorrect username', () => {
-    expect(Validator.validateUsername('2test')).toBeFalsy();
-    expect(Validator.validateUsername('test123456test')).toBeFalsy();
-    expect(Validator.validateUsername('_test3test'));
-    expect(Validator.validateUsername('======')).toBeFalsy();
-    expect(Validator.validateUsername('test_test_')).toBeFalsy();
-    expect(Validator.validateUsername('-test23_test-test')).toBeFalsy();
-    expect(Validator.validateUsername('test23_test-test-')).toBeFalsy();
-    expect(Validator.validateUsername('t=est')).toBeFalsy();
-  });
+test.each([
+  ['2test'],
+  ['test123456test'],
+  ['_test3test'],
+  ['======'],
+  ['test_test_'],
+  ['-test23_test-test'],
+  ['test23_test-test-'],
+  ['t=est'],
+])('testing validateUsername function - incorrect username', (username) => {
+  expect(Validator.validateUsername(username)).toBeFalsy();
 });

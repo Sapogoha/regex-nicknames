@@ -10,6 +10,12 @@
     "sourceType": "module"
   },
   "rules": {
-    "no-restricted-syntax": ["error", "LabeledStatement", "WithStatement"]
+    "no-restricted-syntax": ["error", "LabeledStatement", "WithStatement"],
+    "no-unused-vars": 0,
+    "no-console": ["error", { "allow": ["warn", "error", "log"] }],
+    "no-multiple-empty-lines": 0,
+    "no-confusing-arrow": 0,
+    "no-return-assign": 0,
+    "no-param-reassign": 0
   }
 }
